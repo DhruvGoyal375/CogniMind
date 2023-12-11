@@ -1,0 +1,63 @@
+{% extends "_base.html" %} {% block content %}
+
+<div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+  <h1
+    class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-4xl dark:text-white"
+  >
+    Flights
+  </h1>
+</div>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3 text-center">CARRIER</th>
+        <th scope="col" class="px-6 py-3 text-center">DEPARTURE TIME</th>
+        <th scope="col" class="px-6 py-3 text-center">ARRIVAL TIME</th>
+        <th scope="col" class="px-6 py-3 text-center">PRICE</th>
+        <th scope="col" class="px-6 py-3 text-center">BOOKING</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for flight in flights %}
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td
+          class="px-6 text-center py-10 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ flight.flightName }}
+        </td>
+        <td
+          class="px-6 py-10 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ flight.deptTime }}
+        </td>
+        <td
+          class="px-6 py-10 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ flight.arrivalTime }}
+        </td>
+        <td
+          class="px-6 py-10 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          ₹{{ flight.price }}
+        </td>
+
+        <td
+          class="px-6 py-10 text-center text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          <a
+            href="{{ flight.URL }}"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >{{ flight.source }}</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

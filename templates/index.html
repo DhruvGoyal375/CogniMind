@@ -1,0 +1,37 @@
+<!-- templates/index.html -->
+{% extends "_base.html" %} {% block content %}
+<div class="bg-white max-w-md mx-auto mt-8 p-6 rounded-md shadow-md">
+  <form method="post" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+
+    <div>
+      <label for="csvFile" class="block text-sm font-medium text-gray-700"
+        >Drop .csv file:</label
+      >
+      <input
+        type="file"
+        name="csvFile"
+        accept=".csv"
+        required
+        class="mt-1 p-2 border rounded-md w-full"
+      />
+    </div>
+
+    <div>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+        Submit
+      </button>
+    </div>
+  </form>
+
+  {% if response is not None %}
+  <div class="bg-gray-200 p-4 rounded-md mt-4">
+    <p class="text-lg text-gray-800">
+      The person has a
+      <span class="text-red-500 font-bold">{{ response }}%</span>
+      chance of having autism.
+    </p>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
